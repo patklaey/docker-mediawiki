@@ -1,0 +1,27 @@
+version: '3.2'
+services:
+  web:
+    image: mediawiki
+    container_name: mediawiki-web
+    links:
+      - database
+    ports:
+      - 8001:80
+    volumes:
+      - images:/var/www/html/images
+      - ./extensions:/var/www/html/extensions
+        #- ./LocalSettings.php:/var/www/html/LocalSettings.php
+  database:
+    image: webhippie/mariadb:latest
+    container_name: mediawiki-db  
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+      - MARIADB_USERNAME=${DB_USERNAME}
+      - MARIADB_PASSWORD=${DB_PASSWORD}
+      - MARIADB_DATABASE=${DB_NAME}
+    volumes:
+      - database:/var/lib/mysql
+      - /root/db_backup:/backup
+volumes:
+  database:
+  images:
