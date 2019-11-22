@@ -65,7 +65,8 @@ container)
     vi .env
     ```
 1. Download the ```LocalSettings.php``` file from your existing installation to the current folder
-1. Uncomment the line saying ```- ./LocalSettings.php:/var/www/html/LocalSettings.php``` to copy the just generated 
+1. Uncomment the line saying ```- ./LocalSettings.php:/var/www/html/LocalSettings.php``` to copy the just downloaded
+LocalSettings.php file to your web container on startup 
 1. Edit the ```LocalSettings.php``` file to match the new environment
     ```bash
     vi LocalSettings.php
@@ -104,6 +105,20 @@ container)
     * Upgrade the DB schema
 
 Congrats, you're done!
+
+### Troubleshooting
+
+* Should you see the following error
+    ```
+    [41e5e01ec436cab12d3313d8] /mw-config/?page=ExistingWiki MWException from line 187 of /var/www/html/includes/MagicWord.php: Error: invalid magic word 'createpage'
+    ```
+    The upgrade cannot process the CreatePage extension. Therefore simply comment the line
+    ```php
+    require_once "$IP/extensions/CreatePage/CreatePage.php";
+    ```
+    in the ```LocalSettings.php``` file, restart the mediawiki-web container (```docker restart mediawiki-web```) and 
+    restart the upgrade. When the upgrade is done, uncomment the line again, restart the container and everything should
+    be good-
 
 ## Install an extension
 
