@@ -34,7 +34,7 @@ docker-compose.yml file)
     ```
 1. Uncomment the line saying ```- ./LocalSettings.php:/var/www/html/LocalSettings.php``` to copy the just generated 
 LocalSettings.php file to your web container on startup
-1. Optionally install extensions (see [Install an extension](#Install an extension)) -> without restarting the web 
+1. Optionally install extensions (see [Install an extension](#install-an-extension)) -> without restarting the web 
 container)
     * This installation contains the following extensions already
         * SyntaxHighlight
@@ -72,7 +72,7 @@ container)
     ```
     * Change ```$wgDBserver = "your-old-endpoint";``` to ```$wgDBserver = "database";```
     * Comment/Remove all installed plugins ```require_once "$IP/...";``` or ```wfLoadExtension( '...' );``` or install
-    them again (see [Install an extension](#Install an extension))
+    them again (see [Install an extension](#install-an-extension))
         * This installation contains the following extensions already
             * SyntaxHighlight
             * MobileFrontend
