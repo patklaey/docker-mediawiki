@@ -10,7 +10,7 @@ services:
     volumes:
       - images:/var/www/html/images
       - ./extensions:/var/www/html/extensions
-        #- ./LocalSettings.php:/var/www/html/LocalSettings.php
+      #- ./LocalSettings.php:/var/www/html/LocalSettings.php
   database:
     image: webhippie/mariadb:latest
     container_name: mediawiki-db  
