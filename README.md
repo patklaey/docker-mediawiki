@@ -97,7 +97,7 @@ LocalSettings.php file to your web container on startup
 1. Import the database backup
     ```bash
     source .env
-    docker exec mediawiki-db sh -c "mysql -u ${DB_USERNAME} --password=${DB_PASSWORD} ${DB_NAME} < /root/wiki-utf.sql"  
+    docker exec mediawiki-db sh -c "mysql --default-character-set=latin1 -u ${DB_USERNAME} --password=${DB_PASSWORD} ${DB_NAME} < /root/wiki-utf.sql"  
     ```
 1. Point your browser to your %wiki%/mw-config/, you should now see the Mediawiki installation wizard (remember it's on
  port 8001). So for example: http://192.168.1.2:8001/mw-config/
