@@ -6,7 +6,7 @@ services:
     links:
       - database
     ports:
-      - 8001:80
+      - 8003:80
     volumes:
       - images:/var/www/html/images
       - ./extensions:/var/www/html/extensions
