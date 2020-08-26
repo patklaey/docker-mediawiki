@@ -143,3 +143,40 @@ extension)
     ```bash
     docker restart mediawiki-web
     ```
+## Upgrade
+1. Backup the DB
+    ```bash
+    source .env
+    docker exec mediawiki-db sh -c "mysqldump -u ${DB_USERNAME} --password=${DB_PASSWORD} --opt --quote-names --skip-set-charset --default-character-set=latin1 ${DB_NAME} > /backup/wiki-utf-pre-upgrade.sql"
+    ```
+1. Change the version in the docker-compose.yml
+    ```bash
+    vi docker-compose.yml
+    ```
+1. Stop the service
+    ```bash
+    docker-compose down
+    ```
+1. Edit the LocalSettings.php file and comment the createPage widget (otherwise upgrade will fail)_ 
+    ```bash
+    vi LocalSettings.php
+    ```
+    ```php
+    #require_once "$IP/extensions/CreatePage/CreatePage.php";
+    ```
+1. Start the service again
+    ```bash
+    docker-compose up -d && docker-compose logs -f
+    ```
+1. Point the browser to %wiki-url%/mw-config to perform the DB upgrade (get the upgrade key from you LocalSettings.php)
+1. If everything is done, uncomment the CreatePage extension again and restart the services
+     ```bash
+     vi LocalSettings.php
+     ```
+     ```php
+     require_once "$IP/extensions/CreatePage/CreatePage.php";
+     ```
+     ```bash
+     docker-compose down
+     docker-compose up -d
+     ```
