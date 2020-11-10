@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   web:
-    image: mediawiki:1.34.2
+    image: mediawiki:1.35.0
     container_name: mediawiki-web
     restart: always
     links:
@@ -11,7 +11,7 @@ services:
     volumes:
       - images:/var/www/html/images
       - ./extensions:/var/www/html/extensions
-      #- ./LocalSettings.php:/var/www/html/LocalSettings.php
+      - ./LocalSettings.php:/var/www/html/LocalSettings.php
   database:
     image: webhippie/mariadb:latest
     container_name: mediawiki-db  
