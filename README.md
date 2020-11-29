@@ -9,6 +9,10 @@ Follow those simple steps:
     git clone https://github.com/patklaey/docker-mediawiki
     cd docker-mediawiki
     ```
+1. Copy the env template to have your own version of it
+    ```bash
+    cp .env-template .env
+    ```
 1. Modify the ```.env``` file to change passwords
     ```bash
     vi .env
@@ -59,6 +63,10 @@ container)
     ```bash
     git clone https://github.com/patklaey/docker-mediawiki
     cd docker-mediawiki
+    ```
+1. Copy the env template to have your own version of it
+    ```bash
+    cp .env-template .env
     ```
 1. Modify the ```.env``` file to change passwords
     ```bash
