@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   web:
-    image: mediawiki:1.35.1
+    image: mediawiki:1.35.2
     container_name: mediawiki-web
     restart: always
     links:
